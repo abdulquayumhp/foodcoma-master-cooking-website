@@ -1,148 +1,146 @@
 import React from "react";
 
 const AddService = () => {
+	// const navigation = useNavigate();
+
+	const handleNewCardSubmit = e => {
+		e.preventDefault();
+		const form = e.target;
+		const dishesName = form.dishesName.value;
+		const cookName = form.cookName.value;
+		const rating = form.rating.value;
+		const thumbnailPhoto = form.thumbnailPhoto.value;
+		const userPhoto = form.userPhoto.value;
+		const details = form.details.value;
+
+		fetch("http://localhost:5000/service", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({
+				dishesName,
+				cookName,
+				rating,
+				thumbnailPhoto,
+				userPhoto,
+				details,
+			}),
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				form.reset();
+				// navigation("/");
+			})
+			.catch(err => console.error(err));
+	};
 	return (
-		<section className="h-screen  bg-blue-200 dark:bg-gray-800 dark:text-gray-100 ">
-			<div className=" flex mx-auto  lg:grid-cols-2 xl:grid-cols-5">
-				<div className=" w-[600px] h-screen bg-blue-900  mx-auto  sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-900"></div>
+		<section className="h-full md:h-screen  bg-blue-200 dark:bg-gray-800 dark:text-gray-100 ">
+			<div className=" flex  flex-col md:flex-row">
+				<div className="w-[600px] h-full md:h-screen bg-blue-900   sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-900"></div>
 				<div>
 					<section className="p-6 dark:bg-gray-800 dark:text-gray-50">
 						<form
+							onSubmit={handleNewCardSubmit}
 							action=""
-							className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
-							<fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
-								<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-									<div className="col-span-full sm:col-span-3">
-										<label for="name pb-1" className="text-sm">
+							className=" flex flex-col mx-auto py-20 pl-20">
+							<fieldset className="grid grid-cols-2 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
+								<div className="grid grid-cols-7 gap-4 col-span-full lg:col-span-3">
+									<div className="col-span-full sm:col-span-4 ">
+										<label htmlFor="name pb-1" className="text-sm">
 											Dishes Name
 										</label>
 										<input
 											type="text"
 											placeholder="Dishes Name"
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+											required
+											name="dishesName"
+											className="w-full outline-none py-2 px-1 rounded-md "
+										/>
+									</div>
+									<div className="col-span-full sm:col-span-3 ">
+										<label htmlFor="thumbNailUrl" className="text-sm">
+											Cook Name
+										</label>
+										<input
+											type="text"
+											name="cookName"
+											required
+											placeholder="Last name"
+											className="w-full outline-none py-2 px-1 rounded-md "
+										/>
+									</div>
+									<div className="col-span-full sm:col-span-4 ">
+										<label htmlFor="" className="text-sm">
+											Recipe Name
+										</label>
+										<input
+											type="text"
+											name="recipeName"
+											required
+											placeholder="recipeName"
+											className="w-full outline-none py-2 px-1 rounded-md "
 										/>
 									</div>
 									<div className="col-span-full sm:col-span-3">
-										<label for="thumbNailUrl" className="text-sm">
+										<label htmlFor="photoUrl" className="text-sm">
+											Rating
+										</label>
+										<input
+											type="text"
+											name="rating"
+											required
+											placeholder="Give Rating"
+											className="w-full outline-none py-2 px-1 rounded-md "
+										/>
+									</div>
+
+									<div className="col-span-full">
+										<label htmlFor="" className="text-sm">
 											Thumbnail Photo
 										</label>
 										<input
-											type="text"
+											id="address"
 											name="thumbnailPhoto"
-											placeholder="Last name"
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+											type="text"
+											required
+											placeholder="Thumbnail Photo"
+											className="w-full outline-none py-2 px-1 rounded-md "
 										/>
 									</div>
-									<div className="col-span-full sm:col-span-3">
-										<label for="userPhoto" className="text-sm">
+									<div className="col-span-full">
+										<label htmlFor="address" className="text-sm">
 											User Photo
 										</label>
 										<input
+											id="address"
 											type="text"
+											required
+											placeholder="User Photo"
 											name="userPhoto"
-											placeholder="Last name"
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full sm:col-span-3">
-										<label for="photoUrl" className="text-sm">
-											Photo
-										</label>
-										<input
-											type="text"
-											placeholder="Last name"
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full sm:col-span-3">
-										<label for="email" className="text-sm">
-											Email
-										</label>
-										<input
-											id="email"
-											type="email"
-											placeholder="Email"
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full sm:col-span-3">
-										<label for="email" className="text-sm">
-											Email
-										</label>
-										<input
-											id="email"
-											type="email"
-											placeholder="Email"
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+											className="w-full outline-none py-2 px-1 rounded-md "
 										/>
 									</div>
 									<div className="col-span-full">
-										<label for="address" className="text-sm">
-											Address
+										<label required htmlFor="address" className="text-sm">
+											Details
 										</label>
-										<input
-											id="address"
-											type="text"
-											placeholder=""
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full">
-										<label for="address" className="text-sm">
-											Address
-										</label>
-										<input
-											id="address"
-											type="text"
-											placeholder=""
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full">
-										<label for="address" className="text-sm">
-											Address
-										</label>
-										<input
-											id="address"
-											type="text"
-											placeholder=""
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full sm:col-span-2">
-										<label for="city" className="text-sm">
-											City
-										</label>
-										<input
-											id="city"
-											type="text"
-											placeholder=""
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full sm:col-span-2">
-										<label for="state" className="text-sm">
-											State / Province
-										</label>
-										<input
-											id="state"
-											type="text"
-											placeholder=""
-											className="w-full py-2 px-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
-									</div>
-									<div className="col-span-full sm:col-span-2">
-										<label for="zip" className="text-sm">
-											ZIP / Postal
-										</label>
-										<input
-											id="zip"
-											type="text"
-											placeholder=""
-											className="w-full py-2 px-1  rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
-										/>
+
+										<textarea
+											className="w-full outline-none py-2 px-6 rounded-md "
+											id=""
+											placeholder="Cook Description"
+											name="details"
+											rows="4"
+											cols="50"></textarea>
 									</div>
 								</div>
+								<input
+									className="bg-white col-span-full py-2 pr-4 -mr-6 "
+									type="submit"
+									value="Submit Your Cooking"
+								/>
 							</fieldset>
 						</form>
 					</section>

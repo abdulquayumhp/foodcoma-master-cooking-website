@@ -1,3 +1,4 @@
+import { Card } from "flowbite-react";
 import React, { useContext } from "react";
 import { UserContext } from "../Context/UserInfoContext";
 
@@ -5,14 +6,16 @@ const Home = () => {
 	const { user } = useContext(UserContext);
 	// console.log(user);
 	return (
-		<div>
-			<h1>this is home</h1>
-			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
-				asperiores, nesciunt ab alias ipsam nam rem provident, tempore officia
-				nulla obcaecati ullam, aut necessitatibus voluptate quasi dignissimos
-				praesentium beatae! Ex.
-			</p>
+		<div className="max-w-sm">
+			<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
+				<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+					Noteworthy technology acquisitions 2021
+				</h5>
+				<p className="font-normal text-gray-700 dark:text-gray-400">
+					Here are the biggest enterprise technology acquisitions of 2021 so
+					far, in reverse chronological order.
+				</p>
+			</Card>
 		</div>
 	);
 };
