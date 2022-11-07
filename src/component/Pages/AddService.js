@@ -13,7 +13,7 @@ const AddService = () => {
 		const userPhoto = form.userPhoto.value;
 		const details = form.details.value;
 
-		fetch("http://localhost:5000/service", {
+		fetch("https://server-gray-tau.vercel.app/service", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
