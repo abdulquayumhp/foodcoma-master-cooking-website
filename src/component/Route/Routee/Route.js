@@ -39,7 +39,7 @@ export const route = createBrowserRouter([
 			},
 			{
 				path: "/allData",
-				loader: () => fetch("http://localhost:5000/serviceCard"),
+				loader: () => fetch("https://server-gray-tau.vercel.app/serviceCard"),
 				element: <AllData />,
 			},
 		],
