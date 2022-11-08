@@ -6,11 +6,11 @@ import { UserContext } from "../Context/UserInfoContext";
 
 const DetailsCard = () => {
 	const { userInfo } = useContext(UserContext);
-	// console.log(userInfo);
+	console.log(userInfo);
 	const detailsCard = useLoaderData();
 	const { cookName, details, dishesName, rating, thumbnailPhoto, userPhoto } =
 		detailsCard;
-	// console.log(details);
+	console.log(thumbnailPhoto);
 
 	const handleReviewSubmit = e => {
 		e.preventDefault();
@@ -70,7 +70,11 @@ const DetailsCard = () => {
 						</div>
 						<p className="text-xl text-gray-400"> Rating: {rating}</p>
 					</div>
-
+					<img
+						className="object-cover w-full md:w-[800px] h-[400px] "
+						src={thumbnailPhoto}
+						alt=""
+					/>
 					<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 						{dishesName}
 					</h5>
@@ -86,8 +90,6 @@ const DetailsCard = () => {
 						<fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
 							<div className="space-y-2 col-span-full lg:col-span-1 text-center md:text-left">
 								<p className="font-medium">Profile</p>
-								<p className="text-xs">User Email</p>
-								<p>{userInfo?.email}</p>
 
 								<label for="bio" className="text-sm">
 									User Photo
