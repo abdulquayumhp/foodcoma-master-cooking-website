@@ -1,11 +1,19 @@
 import { Card } from "flowbite-react";
 import React from "react";
+import { HiArrowRight } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
 const HomeCard = ({ serviceCard }) => {
 	// console.log(serviceCard);
-	const { dishesName, cookName, details, rating, thumbnailPhoto, userPhoto } =
-		serviceCard;
+	const {
+		dishesName,
+		cookName,
+		details,
+		rating,
+		thumbnailPhoto,
+		userPhoto,
+		_id,
+	} = serviceCard;
 	return (
 		<div className="max-w-sm mx-auto">
 			<Card>
@@ -19,9 +27,12 @@ const HomeCard = ({ serviceCard }) => {
 				<p className="font-normal text-gray-700 dark:text-gray-400">
 					{details ? details.slice(0, 50) + "....." : "N/A"}
 				</p>
-				<button className="bg-slate-50 hover:bg-slate-200 py-2">
-					<Link>Details More</Link>
-				</button>
+				<div className="flex justify-between items-center ">
+					<h1>{rating}</h1>
+					<Link to={`/details/${_id}`} className="hover:bg-gray-200 p-2">
+						<HiArrowRight className="text-gray-600 hover:text-slate-400 hover:bg-gray-200 " />
+					</Link>
+				</div>
 			</Card>
 		</div>
 	);

@@ -29,11 +29,20 @@ const Header = () => {
 					<Link className="mr-5 text-1xl font-medium" to="/">
 						home
 					</Link>
-					<Link className="mr-5 text-1xl font-medium" to="/myReview">
-						My Review
-					</Link>
-					<Link className="mr-5 text-1xl font-medium" to="/addService">
-						Add Service
+					{userInfo?.uid ? (
+						<>
+							<Link className="mr-5 text-1xl font-medium" to="/myReview">
+								My Review
+							</Link>
+							<Link className="mr-5 text-1xl font-medium" to="/addService">
+								Add Service
+							</Link>
+						</>
+					) : (
+						""
+					)}
+					<Link className="mr-5 text-1xl font-medium" to="/allReview">
+						AllReview
 					</Link>
 					<Link className="mr-5 text-1xl font-medium" to="/about">
 						About
@@ -79,12 +88,18 @@ const Header = () => {
 						<Link className="text-1xl font-medium mb-5" to="/">
 							home
 						</Link>
-						<Link className="text-1xl font-medium mb-5" to="/myReview">
-							My Review
-						</Link>
-						<Link className="text-1xl font-medium mb-5" to="/addService">
-							Add Service
-						</Link>
+						{userInfo?.uid ? (
+							<>
+								<Link className="text-1xl font-medium mb-5" to="/myReview">
+									My Review
+								</Link>
+								<Link className="text-1xl font-medium mb-5" to="/addService">
+									Add Service
+								</Link>
+							</>
+						) : (
+							""
+						)}
 						<Link className="text-1xl font-medium mb-5" to="/about">
 							About
 						</Link>

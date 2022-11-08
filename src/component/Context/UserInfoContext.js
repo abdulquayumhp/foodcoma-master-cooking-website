@@ -15,7 +15,7 @@ const auth = getAuth(app);
 
 const UserInfoContext = ({ children }) => {
 	const [userInfo, setUserInfo] = useState(null);
-	const user = { name: "hello" };
+	// const user = { name: "hello" };
 
 	const createUser = (email, password) => {
 		return createUserWithEmailAndPassword(auth, email, password);
@@ -43,7 +43,6 @@ const UserInfoContext = ({ children }) => {
 	}, []);
 
 	const userInformation = {
-		user,
 		createUser,
 		getLoginInfo,
 		userInfo,

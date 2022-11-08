@@ -4,6 +4,8 @@ import SignUp from "../../LoginInfo/SignUp";
 import About from "../../Pages/About";
 import AddService from "../../Pages/AddService";
 import AllData from "../../Pages/AllData";
+import AllRevies from "../../Pages/AllRevies";
+import DetailsCard from "../../Pages/DetailsCard";
 import Home from "../../Pages/Home";
 import MyReview from "../../Pages/MyReview";
 import Main from "../Layout/Main";
@@ -38,9 +40,20 @@ export const route = createBrowserRouter([
 				element: <AddService />,
 			},
 			{
+				path: "/allReview",
+				element: <AllRevies />,
+				loader: () => fetch("http://localhost:5000/allReview"),
+			},
+			{
 				path: "/allData",
 				loader: () => fetch("https://server-gray-tau.vercel.app/serviceCard"),
 				element: <AllData />,
+			},
+			{
+				path: "/details/:id",
+				loader: ({ params }) =>
+					fetch(`http://localhost:5000/details/${params.id}`),
+				element: <DetailsCard />,
 			},
 		],
 	},

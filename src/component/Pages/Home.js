@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserInfoContext";
 import HomeCard from "./HomeCard";
@@ -26,8 +27,10 @@ const Home = () => {
 				))}
 			</div>
 			<div className="pb-20 w-full text-center">
-				<button className="bg-white text-black py-2 px-36 hover:bg-slate-100 mx-auto ">
-					<Link to="/allData">All Service</Link>
+				<button className="bg-white text-black py-2  hover:bg-slate-100 mx-auto ">
+					<Link className="px-24" to="/allData">
+						All Service
+					</Link>
 				</button>
 			</div>
 		</div>

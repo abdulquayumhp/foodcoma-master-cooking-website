@@ -1,5 +1,6 @@
 import { Card } from "flowbite-react";
 import React from "react";
+import { HiArrowRight } from "react-icons/hi2";
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllData = () => {
@@ -36,9 +37,14 @@ const AllData = () => {
 							<p className="font-normal text-gray-700 dark:text-gray-400">
 								{allService.details}
 							</p>
-							<button className="bg-slate-50 hover:bg-slate-200 py-2">
-								<Link>Details More</Link>
-							</button>
+							<div className="flex justify-between items-center ">
+								<h1>{allService.rating}</h1>
+								<Link
+									to={`/details/${allService._id}`}
+									className="hover:bg-gray-200 p-2">
+									<HiArrowRight className="text-gray-600 hover:text-slate-400 hover:bg-gray-200 " />
+								</Link>
+							</div>
 						</Card>
 					</div>
 				</div>
