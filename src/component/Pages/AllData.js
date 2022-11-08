@@ -1,6 +1,8 @@
 import { Card } from "flowbite-react";
 import React from "react";
 import { HiArrowRight } from "react-icons/hi2";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllData = () => {
@@ -22,11 +24,15 @@ const AllData = () => {
 									{allService.dishesName}
 								</span>
 							</h5>
-							<img
-								className="h-72 object-cover"
-								src={allService.thumbnailPhoto}
-								alt=""
-							/>
+							<PhotoProvider className="">
+								<PhotoView className="" src={allService.thumbnailPhoto}>
+									<img
+										className="h-72 object-cover"
+										src={allService.thumbnailPhoto}
+										alt=""
+									/>
+								</PhotoView>
+							</PhotoProvider>
 							<h5 className=" font-bold text-xl tracking-tight text-gray-500 dark:text-white">
 								cook:{" "}
 								<span className="text-gray-400 text-xl">

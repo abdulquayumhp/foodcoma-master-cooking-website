@@ -31,7 +31,7 @@ const Header = () => {
 					</Link>
 					{userInfo?.uid ? (
 						<>
-							<Link className="mr-5 text-1xl font-medium" to="/myReview">
+							<Link to="/myReview" className="mr-5 text-1xl font-medium">
 								My Review
 							</Link>
 							<Link className="mr-5 text-1xl font-medium" to="/addService">
@@ -68,10 +68,14 @@ const Header = () => {
 				</div>
 				<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
 					<div className="w-10 rounded-full">
-						<img
-							className="object-cover"
-							src={userInfo?.photoURL ? userInfo.photoURL : <FaUserAlt />}
-						/>
+						{userInfo?.uid ? (
+							<img
+								className="object-cover"
+								src={userInfo?.photoURL ? userInfo.photoURL : <FaUserAlt />}
+							/>
+						) : (
+							<FaUserAlt className="object-cover text-3xl ml-1 mt-1 " />
+						)}
 					</div>
 				</label>
 			</div>

@@ -163,7 +163,7 @@ const SignUp = () => {
 								type="text"
 								name="name"
 								placeholder="email"
-								className="outline-none w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+								className="border-none  outline-none w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
 						{<p>{error.name}</p>}
@@ -176,7 +176,7 @@ const SignUp = () => {
 								onChange={userUrlSubmit}
 								name="imageUrl"
 								placeholder="Enter Your Email Url"
-								className="outline-none w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+								className="outline-none w-full border-none  px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
 						{<p>{error.url}</p>}
@@ -190,7 +190,7 @@ const SignUp = () => {
 								name="email"
 								onChange={userEmailSubmit}
 								placeholder="email"
-								className="outline-none w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+								className="outline-none w-full border-none  px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
 						{error.email && <p>{error.email}</p>}
@@ -206,7 +206,7 @@ const SignUp = () => {
 								name="password"
 								id="password"
 								placeholder="password"
-								className="w-full outline-none px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+								className="w-full outline-none px-3 py-2 border border-none  rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
 						{error.password && <p>{error.password} </p>}

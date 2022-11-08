@@ -3,6 +3,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserInfoContext";
 import HomeCard from "./HomeCard";
+import HomeCookingClass from "./HomeCookingClass";
+import HomeHeroSection from "./HomeHeroSection";
+import HomeSectionFreeCamp from "./HomeSectionFreeCamp";
+import HomeTeamSection from "./HomeTeamSection";
 
 const Home = () => {
 	const { user } = useContext(UserContext);
@@ -21,6 +25,11 @@ const Home = () => {
 	// console.log(user);
 	return (
 		<div>
+			<div>
+				<HomeHeroSection />
+				<HomeSectionFreeCamp />
+			</div>
+
 			<div className=" py-20  lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3  ">
 				{serviceCards.map(serviceCard => (
 					<HomeCard key={serviceCard._id} serviceCard={serviceCard} />
@@ -33,6 +42,8 @@ const Home = () => {
 					</Link>
 				</button>
 			</div>
+			<HomeCookingClass />
+			<HomeTeamSection />
 		</div>
 	);
 };

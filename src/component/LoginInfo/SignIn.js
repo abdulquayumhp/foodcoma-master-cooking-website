@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserInfoContext";
 
 const SignIn = () => {
-	const { getLoginInfo } = useContext(UserContext);
+	const { getLoginInfo, GoogleUserAdd, gitHubLogin } = useContext(UserContext);
 	const [userInfo, setUserInfo] = useState({
 		email: "",
 		password: "",
@@ -38,6 +38,24 @@ const SignIn = () => {
 		const password = e.target.value;
 		setUserInfo({ ...userInfo, password: e.target.value });
 	};
+	const handleGoogleSignIn = () => {
+		// console.log("us");
+		GoogleUserAdd()
+			.then(update => {
+				console.log(update.user);
+			})
+			.catch(error => console.error(error));
+	};
+	const handleGitHubSignIn = () => {
+		console.log("us");
+		gitHubLogin()
+			.then(update => {
+				const user = update.user;
+				console.log(user);
+				// navigate(from, { replace: true });
+			})
+			.catch(error => console.error(error));
+	};
 	return (
 		<div className="flex md:w-9/12 flex-col mx-auto justify-center items-center md:flex-row pb-10 h-screen">
 			<div>
@@ -60,6 +78,7 @@ const SignIn = () => {
 				<div className="my-6 space-y-4">
 					<div className="flex gap-5">
 						<button
+							onClick={handleGoogleSignIn}
 							aria-label="Login with Google"
 							type="button"
 							className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1
@@ -70,6 +89,7 @@ const SignIn = () => {
 							<p>Google</p>
 						</button>
 						<button
+							onClick={handleGitHubSignIn}
 							aria-label="Login with GitHub"
 							role="button"
 							className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 
@@ -118,7 +138,7 @@ const SignIn = () => {
 								name="email"
 								onChange={userEmailSubmit}
 								placeholder="email"
-								className="outline-none w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+								className="outline-none w-full px-3 border-none py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
 
@@ -139,14 +159,14 @@ const SignIn = () => {
 								name="password"
 								id="password"
 								placeholder="password"
-								className="w-full outline-none px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+								className="w-full border-none outline-none px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
 					</div>
 					<p className="text-sm text-center dark:text-gray-400">
 						Already have an account?
 						<Link to="/signUp" className="focus:underline hover:underline">
-							logIn here
+							SignUp
 						</Link>
 					</p>
 					{error.general ? (
@@ -162,7 +182,7 @@ const SignIn = () => {
 					hover:bg-slate-100
 					dark:bg-violet-400 dark:text-gray-900"
 						type="submit"
-						value="SignUp"
+						value="SignIn"
 					/>
 				</form>
 			</div>

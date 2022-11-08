@@ -1,5 +1,6 @@
 import { Avatar, Card } from "flowbite-react";
 import React, { useContext } from "react";
+import "react-photo-view/dist/react-photo-view.css";
 import { useLoaderData } from "react-router-dom";
 import { UserContext } from "../Context/UserInfoContext";
 
@@ -69,7 +70,7 @@ const DetailsCard = () => {
 						</div>
 						<p className="text-xl text-gray-400"> Rating: {rating}</p>
 					</div>
-					<img className="object-cover h-[500px]" src={thumbnailPhoto} alt="" />
+
 					<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 						{dishesName}
 					</h5>
