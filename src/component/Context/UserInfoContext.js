@@ -21,17 +21,21 @@ const auth = getAuth(app);
 
 const UserInfoContext = ({ children }) => {
 	const [userInfo, setUserInfo] = useState(null);
+	const [loading, setLoading] = useState(true);
 	// const user = { name: "hello" };
 
 	const createUser = (email, password) => {
+		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
 	const getLoginInfo = (email, password) => {
+		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const updateUserProfile = profile => {
+		setLoading(true);
 		return updateProfile(auth.currentUser, profile);
 	};
 
@@ -50,6 +54,7 @@ const UserInfoContext = ({ children }) => {
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, currentUser => {
 			setUserInfo(currentUser);
+			setLoading(false);
 		});
 		return () => {
 			unsubscribe();
@@ -64,6 +69,8 @@ const UserInfoContext = ({ children }) => {
 		UserLogOut,
 		GoogleUserAdd,
 		gitHubLogin,
+		loading,
+		setLoading,
 	};
 	return (
 		<div>
