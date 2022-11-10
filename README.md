@@ -1,6 +1,6 @@
 # website name
 
-<!-- Food Coma
+Food Coma
 
 # Website Link
 
@@ -24,7 +24,7 @@ this website for cooking purpase, user can add online multiple cooking itm ,with
 
 # website name
 
-Food Coma -->
+Food Coma
 
 # Website Link
 
