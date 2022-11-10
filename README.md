@@ -4,7 +4,7 @@ Food Coma
 
 # Website Link
 
-https://curese-buying-website.web.app/
+https://chic-manatee-b3030a.netlify.app/
 
 # library use
 
@@ -28,7 +28,7 @@ Food Coma
 
 # Website Link
 
-https://curese-buying-website.web.app/
+https://chic-manatee-b3030a.netlify.app/
 
 # library use
 
