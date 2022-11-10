@@ -18,7 +18,7 @@ const Update = () => {
 		const shortText = form.shortText.value;
 		const detailsReview = form.detailsReview.value;
 		console.log(email, name, photoUrl, rating, shortText, detailsReview);
-		fetch(`http://localhost:5000/users/${users._id}`, {
+		fetch(`https://server-gray-tau.vercel.app/users/${users._id}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json",
@@ -33,7 +33,13 @@ const Update = () => {
 			}),
 		})
 			.then(res => res.json())
-			.then(data => {});
+			.then(data => {
+				Swal.fire(
+					"Good job!",
+					"Thank you to purchase our courses! You will get a email on this email as soon as possible",
+					"success"
+				);
+			});
 	};
 
 	const submit = () => {

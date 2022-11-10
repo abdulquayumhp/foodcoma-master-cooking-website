@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { FaStar, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 import { UserContext } from "../Context/UserInfoContext";
 
 const MyReview = () => {
+	useTitle("My Review");
 	const { userInfo, loading, setLoading } = useContext(UserContext);
 
 	const [reviewData, setReviewData] = useState([]);
@@ -13,14 +15,17 @@ const MyReview = () => {
 	console.log("xx", reviewData);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/myReviews?email=${userInfo?.email}`)
-			.then(res => res.json())
-			.then(data => console.log(data))
-			.catch(err => console.log(err));
-	}, [loading]);
+		fetch(
+			` https://server-gray-tau.vercel.app/myReviews?email=${userInfo?.email}`
+		)
+			.then(res => {
+				res.json();
+			})
+			.then(data => console.log(data));
+	}, []);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/myReviews`)
+		fetch(`https://server-gray-tau.vercel.app/myReviews`)
 			.then(res => res.json())
 			.then(data => setReviewData(data))
 			.catch(err => console.log(err));
@@ -28,7 +33,7 @@ const MyReview = () => {
 
 	const handleDelate = id => {
 		console.log(id);
-		fetch(`http://localhost:5000/delateReview/${id}`, {
+		fetch(`https://server-gray-tau.vercel.app/delateReview/${id}`, {
 			method: "DELETE",
 		})
 			.then(res => res.json())

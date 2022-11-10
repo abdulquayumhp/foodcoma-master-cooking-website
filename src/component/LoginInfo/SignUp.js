@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 import { UserContext } from "../Context/UserInfoContext";
 
 const SignUp = () => {
+	useTitle("SignUp");
 	const { createUser, updateUserProfile } = useContext(UserContext);
 	// console.log(createUser);
 

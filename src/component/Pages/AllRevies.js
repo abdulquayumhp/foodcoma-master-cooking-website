@@ -1,8 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 import AllReviewsCard from "./AllReviewsCard";
 
 const AllRevies = () => {
+	useTitle("All Review");
 	const allReview = useLoaderData();
 	// console.log(allReview);
 	const { data } = allReview;

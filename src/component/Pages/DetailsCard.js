@@ -1,10 +1,17 @@
 import { Avatar, Card } from "flowbite-react";
 import React, { useContext } from "react";
 import "react-photo-view/dist/react-photo-view.css";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 import { UserContext } from "../Context/UserInfoContext";
 
 const DetailsCard = () => {
+	const submit = () => {
+		Swal.fire("Good job!", "", "success");
+	};
+
+	useTitle("Card Details");
 	const { userInfo } = useContext(UserContext);
 	console.log(userInfo);
 	const detailsCard = useLoaderData();
@@ -23,7 +30,7 @@ const DetailsCard = () => {
 		const detailsReview = form.detailsReview.value;
 		// console.log(email, name, photoUrl, rating, shortText, details);
 
-		fetch("http://localhost:5000/review", {
+		fetch("https://server-gray-tau.vercel.app/review", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -182,6 +189,7 @@ const DetailsCard = () => {
 								</div>
 							</div>
 							<input
+								onClick={submit}
 								className="bg-slate-200 hover:bg-slate-400 cursor-pointer col-span-full py-2 pr-4  "
 								type="submit"
 								value="Submit Your Cooking"
@@ -192,6 +200,7 @@ const DetailsCard = () => {
 			) : (
 				<div className="ml-96 mr-96">
 					<h1>please first you want to login</h1>
+					<Link to="/signIn"> SignIn</Link>
 				</div>
 			)}
 		</div>

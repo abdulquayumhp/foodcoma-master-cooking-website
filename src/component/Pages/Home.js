@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 import { UserContext } from "../Context/UserInfoContext";
 import HomeCard from "./HomeCard";
 import HomeCookingClass from "./HomeCookingClass";
@@ -9,6 +10,7 @@ import HomeSectionFreeCamp from "./HomeSectionFreeCamp";
 import HomeTeamSection from "./HomeTeamSection";
 
 const Home = () => {
+	useTitle("HOME");
 	const { user } = useContext(UserContext);
 	const [serviceCards, setServiceCards] = useState([]);
 

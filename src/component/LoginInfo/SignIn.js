@@ -1,10 +1,19 @@
 import React, { useContext, useState } from "react";
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 import { UserContext } from "../Context/UserInfoContext";
 
 const SignIn = () => {
+	useTitle("Sign In");
+
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const from = location.state?.from?.pathname || "/";
+
 	const { getLoginInfo, GoogleUserAdd, gitHubLogin } = useContext(UserContext);
 	const [userInfo, setUserInfo] = useState({
 		email: "",
@@ -21,7 +30,27 @@ const SignIn = () => {
 		const name = e.target.name.value;
 		getLoginInfo(userInfo.email, userInfo.password)
 			.then(update => {
+				const user = update.user;
+				const currentUser = {
+					email: user.email,
+				};
+				console.log(currentUser);
 				console.log(update.user);
+				Swal.fire("Good job!", "Successfully login", "success");
+
+				fetch("https://server-gray-tau.vercel.app/jwt", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify(currentUser),
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						localStorage.setItem("token", data.token);
+						navigate(from, { replace: true });
+					});
 			})
 			.catch(error => {
 				// console.log(error);
@@ -43,6 +72,7 @@ const SignIn = () => {
 		GoogleUserAdd()
 			.then(update => {
 				console.log(update.user);
+				navigate(from, { replace: true });
 			})
 			.catch(error => console.error(error));
 	};
@@ -50,9 +80,8 @@ const SignIn = () => {
 		console.log("us");
 		gitHubLogin()
 			.then(update => {
-				const user = update.user;
-				console.log(user);
-				// navigate(from, { replace: true });
+				console.log(update.user);
+				navigate(from, { replace: true });
 			})
 			.catch(error => console.error(error));
 	};

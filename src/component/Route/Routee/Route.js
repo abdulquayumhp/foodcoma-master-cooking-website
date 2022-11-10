@@ -9,6 +9,7 @@ import DetailsCard from "../../Pages/DetailsCard";
 import Home from "../../Pages/Home";
 import MyReview from "../../Pages/MyReview";
 import Update from "../../Pages/Update";
+import ProtectedRoute from "../../ProtectedRoute/ProtectedRoute";
 import Main from "../Layout/Main";
 
 export const route = createBrowserRouter([
@@ -34,23 +35,31 @@ export const route = createBrowserRouter([
 			},
 			{
 				path: "/myReview",
-				element: <MyReview />,
+				element: (
+					<ProtectedRoute>
+						<MyReview />
+					</ProtectedRoute>
+				),
 			},
 
 			{
 				path: "/update/:id",
 				element: <Update />,
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/users/${params.id}`),
+					fetch(`https://server-gray-tau.vercel.app/users/${params.id}`),
 			},
 			{
 				path: "/addService",
-				element: <AddService />,
+				element: (
+					<ProtectedRoute>
+						<AddService />
+					</ProtectedRoute>
+				),
 			},
 			{
 				path: "/allReview",
 				element: <AllRevies />,
-				loader: () => fetch("http://localhost:5000/allReview"),
+				loader: () => fetch("https://server-gray-tau.vercel.app/allReview"),
 			},
 			{
 				path: "/allData",
@@ -60,7 +69,7 @@ export const route = createBrowserRouter([
 			{
 				path: "/details/:id",
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/details/${params.id}`),
+					fetch(`https://server-gray-tau.vercel.app/details/${params.id}`),
 				element: <DetailsCard />,
 			},
 		],
