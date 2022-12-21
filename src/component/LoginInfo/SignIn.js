@@ -29,27 +29,28 @@ const SignIn = () => {
 		e.preventDefault();
 		const name = e.target.name.value;
 		getLoginInfo(userInfo.email, userInfo.password)
-			.then(update => {
-				const user = update.user;
+			.then(result => {
+				const user = result.user;
+
 				const currentUser = {
 					email: user.email,
 				};
-				console.log(currentUser);
-				console.log(update.user);
-				Swal.fire("Good job!", "Successfully login", "success");
-
-				fetch("https://server-gray-tau.vercel.app/jwt", {
+				fetch(" https://food-masty-server.vercel.app/jwt", {
 					method: "POST",
-					headers: {
-						"content-type": "application/json",
-					},
+					headers: { "content-type": "application/json" },
 					body: JSON.stringify(currentUser),
 				})
 					.then(res => res.json())
 					.then(data => {
-						console.log(data);
-						localStorage.setItem("token", data.token);
+						localStorage.setItem("recipe-token", data.token);
 						navigate(from, { replace: true });
+						Swal.fire({
+							position: "top-center",
+							icon: "success",
+							title: "Log in successfully",
+							showConfirmButton: false,
+							timer: 1500,
+						});
 					});
 			})
 			.catch(error => {
@@ -70,18 +71,58 @@ const SignIn = () => {
 	const handleGoogleSignIn = () => {
 		// console.log("us");
 		GoogleUserAdd()
-			.then(update => {
-				console.log(update.user);
-				navigate(from, { replace: true });
+			.then(result => {
+				const user = result.user;
+
+				const currentUser = {
+					email: user.email,
+				};
+				fetch(" https://food-masty-server.vercel.app/jwt", {
+					method: "POST",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify(currentUser),
+				})
+					.then(res => res.json())
+					.then(data => {
+						localStorage.setItem("recipe-token", data.token);
+						navigate(from, { replace: true });
+						Swal.fire({
+							position: "top-center",
+							icon: "success",
+							title: "Log in successfully",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+					});
 			})
 			.catch(error => console.error(error));
 	};
 	const handleGitHubSignIn = () => {
 		console.log("us");
 		gitHubLogin()
-			.then(update => {
-				console.log(update.user);
-				navigate(from, { replace: true });
+			.then(result => {
+				const user = result.user;
+
+				const currentUser = {
+					email: user.email,
+				};
+				fetch(" https://food-masty-server.vercel.app/jwt", {
+					method: "POST",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify(currentUser),
+				})
+					.then(res => res.json())
+					.then(data => {
+						localStorage.setItem("recipe-token", data.token);
+						navigate(from, { replace: true });
+						Swal.fire({
+							position: "top-center",
+							icon: "success",
+							title: "Log in successfully",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+					});
 			})
 			.catch(error => console.error(error));
 	};

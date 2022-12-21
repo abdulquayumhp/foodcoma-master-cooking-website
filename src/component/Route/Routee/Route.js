@@ -6,6 +6,7 @@ import AddService from "../../Pages/AddService";
 import AllData from "../../Pages/AllData";
 import AllRevies from "../../Pages/AllRevies";
 import DetailsCard from "../../Pages/DetailsCard";
+import ErrorPage from "../../Pages/ErrorPage";
 import Home from "../../Pages/Home";
 import MyReview from "../../Pages/MyReview";
 import Update from "../../Pages/Update";
@@ -16,6 +17,7 @@ export const route = createBrowserRouter([
 	{
 		path: "/",
 		element: <Main />,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/",

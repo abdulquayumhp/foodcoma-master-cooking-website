@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import { UserContext } from "../Context/UserInfoContext";
 
 const SignUp = () => {
+	const navigate = useNavigate();
+
 	useTitle("SignUp");
 	const { createUser, updateUserProfile } = useContext(UserContext);
 	// console.log(createUser);
@@ -26,13 +28,14 @@ const SignUp = () => {
 
 	const handleUserSubmitSion = e => {
 		e.preventDefault();
-		const name = e.target.name.value;
+		const name = e.target;
 
 		createUser(userInfo.email, userInfo.password)
 			.then(update => {
 				console.log(update.user);
 				handleUpdateUserProfile(userInfo.name, userInfo.url);
-				userInfo.reset("");
+				name.reset("");
+				navigate("/signIn");
 			})
 
 			.catch(err => {
@@ -216,7 +219,7 @@ const SignUp = () => {
 					<p className="text-sm text-center dark:text-gray-400">
 						Don't have an account?
 						<Link to="/signIn" className="focus:underline hover:underline">
-							Sign up here
+							Sign In here
 						</Link>
 					</p>
 					<input

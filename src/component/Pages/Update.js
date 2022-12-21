@@ -17,7 +17,7 @@ const Update = () => {
 		const rating = form.rating.value;
 		const shortText = form.shortText.value;
 		const detailsReview = form.detailsReview.value;
-		console.log(email, name, photoUrl, rating, shortText, detailsReview);
+		// console.log(email, name, photoUrl, rating, shortText, detailsReview);
 		fetch(`https://server-gray-tau.vercel.app/users/${users._id}`, {
 			method: "PUT",
 			headers: {

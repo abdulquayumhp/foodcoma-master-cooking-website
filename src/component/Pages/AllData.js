@@ -41,7 +41,9 @@ const AllData = () => {
 								</span>
 							</h5>
 							<p className="font-normal text-gray-700 dark:text-gray-400">
-								{allService.details}
+								{allService.details
+									? allService.details.slice(0, 100) + "....."
+									: "N/A"}
 							</p>
 							<div className="flex justify-between items-center ">
 								<h1>{allService.rating}</h1>

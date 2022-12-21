@@ -32,6 +32,7 @@ const AllReviewsCard = ({ ReviewCard }) => {
 					{details ? details.slice(0, 50) + "....." : "N/A"}
 				</p>
 			</Card>
+
 			<div className="max-w-md p-8  bg-white ">
 				<h1 className="text-center text-xl pb-5 font-bold">
 					Reviewer Information

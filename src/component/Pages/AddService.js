@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../Hooks/useTitle";
 
 const AddService = () => {
+	useTitle("add service");
 	// const navigation = useNavigate();
 
 	const handleNewCardSubmit = e => {

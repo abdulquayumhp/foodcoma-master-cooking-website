@@ -30,12 +30,18 @@ const Header = () => {
 						home
 					</Link>
 
-					<Link to="/myReview" className="mr-5 text-1xl font-medium">
-						My Review
-					</Link>
-					<Link className="mr-5 text-1xl font-medium" to="/addService">
-						Add Service
-					</Link>
+					{userInfo?.uid ? (
+						<>
+							<Link to="/myReview" className="mr-5 text-1xl font-medium">
+								My Review
+							</Link>
+							<Link className="mr-5 text-1xl font-medium" to="/addService">
+								Add Service
+							</Link>
+						</>
+					) : (
+						""
+					)}
 
 					<Link className="mr-5 text-1xl font-medium" to="/allReview">
 						AllReview
@@ -89,20 +95,23 @@ const Header = () => {
 							home
 						</Link>
 
-						<>
-							<Link className="text-1xl font-medium mb-5" to="/myReview">
-								My Review
-							</Link>
-							<Link className="text-1xl font-medium mb-5" to="/addService">
-								Add Service
-							</Link>
-						</>
-
+						{userInfo?.uid ? (
+							<>
+								<Link to="/myReview" className="mr-5 text-1xl font-medium">
+									My Review
+								</Link>
+								<Link className="mr-5 text-1xl font-medium" to="/addService">
+									Add Service
+								</Link>
+							</>
+						) : (
+							""
+						)}
+						<Link className=" text-1xl font-medium mb-5" to="/allReview">
+							AllReview
+						</Link>
 						<Link className="text-1xl font-medium mb-5" to="/about">
 							About
-						</Link>
-						<Link className="mr-5 text-1xl font-medium" to="/allReview">
-							AllReview
 						</Link>
 					</ul>
 				</div>
